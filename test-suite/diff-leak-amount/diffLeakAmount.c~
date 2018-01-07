@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <string.h> 
+
+int auth(char c){
+  if(c == 'd')
+    return 1;
+  else
+    return 0;
+}
+
+char* auth2(){
+  if(c == 'd')
+    return "yes";
+  else
+    return "no";
+}
+
+
+int main() {
+    FILE *fp;
+    char* filename = "password.txt";
+
+    fp = fopen(filename, "r");
+    char input = fgetc(fp);//read a char from the file
+
+    if(auth(input))
+      printf("auth : YES\n");
+    else
+      printf("auth : NO\n");
+
+    if(auth2(input))
+      printf("auth2 : YES\n");
+    else
+      printf("auth2 : NO\n");
+
+    fclose(fp);
+    return 0;
+}
