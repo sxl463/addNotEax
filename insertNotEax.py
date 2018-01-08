@@ -17,8 +17,14 @@ f.close()
 with open("auth.S", "r") as in_file:
     buf = in_file.readlines()
 
+new_buf = []
 with open("auth.addecx.S", "w") as out_file:
     for line in buf:
-        if line == "; Include this text\n":
-            line = line + "Include below\n"
+        if "ret" in line:
+            print line
+            new_buf.append('	not	%eax\n')
+            new_buf.append('	not	%eax\n')
+        new_buf.append(line);
+
+    for line in new_buf:
         out_file.write(line)

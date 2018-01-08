@@ -19,6 +19,8 @@ auth:                                   # @auth
 	popl	%ebp
 	not	%eax
 	not	%eax
+	not	%eax
+	not	%eax
 	retl
 .Ltmp0:
 	.size	auth, .Ltmp0-auth
@@ -70,6 +72,8 @@ main:                                   # @main
 	movl	%ecx, %eax
 	addl	$40, %esp
 	popl	%ebp
+	not	%eax
+	not	%eax
 	not	%eax
 	not	%eax
 	retl
