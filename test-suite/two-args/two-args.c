@@ -1,20 +1,20 @@
 #include <stdio.h>
-#include <string.h> 
+#include <stdlib.h>
 
-
-int auth(char c){
-  return c == 'a';
+int auth(char c1, char c2){
+  return c1 == 'a';
 }
-
 
 int main() {
     FILE *fp;
     char* filename = "password.txt";
+    char str[20];
 
+    //read two chars from password.txt to str
     fp = fopen(filename, "r");
-    char input = fgetc(fp);//read a char from the file
+    fgets(str, 2, fp);
 
-    if(auth(input))
+    if(auth(str[0], str[1]))
       printf("YES\n");
     else
       printf("NO\n");
@@ -22,19 +22,3 @@ int main() {
     fclose(fp);
     return 0;
 }
-
-
-
-
-/*
-    while (fgetc(fp) != NULL){
-        printf("password in auth.txt: %s", str);
-	printf("input string: %s\n", input);
-
-	if (auth(str, input) == 0){
-	  printf("auth succeeded!\n");
-	}
-	else
-	  printf("%s\n", str);
-    }
-*/
