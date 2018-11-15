@@ -1,102 +1,121 @@
-	.text
-	.file	"auth.c"
-	.globl	auth
-	.align	16, 0x90
-	.type	auth,@function
-auth:                                   # @auth
-# BB#0:                                 # %entry
-	pushl	%ebp
-	movl	%esp, %ebp
-	pushl	%eax
-	movb	8(%ebp), %al
-	movb	%al, -1(%ebp)
-	movsbl	-1(%ebp), %ecx
-	cmpl	$97, %ecx
-	sete	%al
-	andb	$1, %al
-	movzbl	%al, %eax
-	addl	$4, %esp
-	popl	%ebp
-	not	%eax
-	not	%eax
-	retl
-.Ltmp0:
-	.size	auth, .Ltmp0-auth
-
-	.globl	main
-	.align	16, 0x90
-	.type	main,@function
-main:                                   # @main
-# BB#0:                                 # %entry
-	pushl	%ebp
-	movl	%esp, %ebp
-	subl	$40, %esp
-	leal	.L.str1, %eax
-	leal	.L.str, %ecx
-	movl	$0, -4(%ebp)
-	movl	%ecx, -12(%ebp)
-	movl	-12(%ebp), %ecx
-	movl	%ecx, (%esp)
-	movl	%eax, 4(%esp)
-	calll	fopen
-	movl	%eax, -8(%ebp)
-	movl	-8(%ebp), %eax
-	movl	%eax, (%esp)
-	calll	fgetc
-	movb	%al, %dl
-	movb	%dl, -13(%ebp)
-	movsbl	-13(%ebp), %eax
-	movl	%eax, (%esp)
-	calll	auth
-	cmpl	$0, %eax
-	je	.LBB1_2
-# BB#1:                                 # %if.then
-	leal	.L.str2, %eax
-	movl	%eax, (%esp)
-	calll	printf
-	movl	%eax, -20(%ebp)         # 4-byte Spill
-	jmp	.LBB1_3
-.LBB1_2:                                # %if.else
-	leal	.L.str3, %eax
-	movl	%eax, (%esp)
-	calll	printf
-	movl	%eax, -24(%ebp)         # 4-byte Spill
-.LBB1_3:                                # %if.end
-	movl	-8(%ebp), %eax
-	movl	%eax, (%esp)
-	calll	fclose
-	movl	$0, %ecx
-	movl	%eax, -28(%ebp)         # 4-byte Spill
-	movl	%ecx, %eax
-	addl	$40, %esp
-	popl	%ebp
-	not	%eax
-	not	%eax
-	retl
-.Ltmp1:
-	.size	main, .Ltmp1-main
-
-	.type	.L.str,@object          # @.str
-	.section	.rodata.str1.1,"aMS",@progbits,1
-.L.str:
-	.asciz	"password.txt"
-	.size	.L.str, 13
-
-	.type	.L.str1,@object         # @.str1
-.L.str1:
-	.asciz	"r"
-	.size	.L.str1, 2
-
-	.type	.L.str2,@object         # @.str2
-.L.str2:
-	.asciz	"YES\n"
-	.size	.L.str2, 5
-
-	.type	.L.str3,@object         # @.str3
-.L.str3:
-	.asciz	"NO\n"
-	.size	.L.str3, 4
-
-
-	.ident	"clang version 3.5.0 (tags/RELEASE_350/final)"
-	.section	".note.GNU-stack","",@progbits
+0 2 8
+0 3 8
+0 4 8
+0 5 8
+0 6 8
+0 7 8
+0 8 8
+0 9 8
+0 10 8
+0 11 8
+2 12 8
+12 13 8
+13 14 8
+14 15 8
+15 16 8
+16 17 1
+17 18 1
+18 19 1
+19 20 1
+20 21 1
+21 22 1
+22 23 1
+23 24 1
+2 25 8
+25 26 8
+26 27 8
+27 28 8
+28 29 8
+29 30 8
+30 31 8
+31 32 8
+32 33 8
+33 34 8
+28 35 8
+35 36 8
+34 38 8
+38 39 8
+39 40 8
+40 41 8
+41 42 8
+42 43 8
+43 44 32
+44 45 32
+44 46 8
+46 47 8
+47 48 8
+48 49 8
+45 50 32
+50 51 24
+51 52 24
+49 52 8
+52 53 32
+53 54 32
+54 55 8
+55 56 8
+56 57 8
+57 58 8
+58 59 32
+59 60 32
+60 61 32
+61 62 1
+62 63 1
+63 64 1
+64 65 1
+65 66 1
+66 67 1
+67 68 1
+68 69 1
+69 70 1
+70 71 1
+71 72 1
+72 73 1
+73 74 1
+53 75 32
+75 76 24
+76 77 24
+74 77 1
+77 78 25
+78 79 25
+79 80 1
+80 81 1
+81 82 1
+82 83 1
+83 84 1
+84 85 1
+85 86 1
+78 87 25
+87 88 24
+88 89 24
+86 89 1
+89 90 25
+90 91 25
+91 92 1
+92 93 1
+93 94 1
+94 95 1
+95 96 1
+96 97 1
+97 98 1
+98 99 1
+99 100 1
+100 101 1
+101 102 1
+102 103 1
+103 104 1
+104 105 1
+105 106 1
+106 107 1
+107 108 1
+108 109 1
+109 110 1
+110 111 1
+111 24 1
+60 112 32
+39 113 8
+113 114 8
+112 115 32
+24 -1 8
+24 -1 8
+24 -1 8
+24 -1 8
